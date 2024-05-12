@@ -2,13 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sislog</groupId>
-<<<<<<< HEAD
-    <artifactId>SisLog_01</artifactId>
+    <artifactId>SisLog</artifactId>
     <version>0.1.0</version>
-=======
-    <artifactId>SistemaLogin</artifactId>
-    <version>0.0.1</version>
->>>>>>> b2b921866b892dce7a05369c270ab649abeead9f
     <packaging>jar</packaging>
     <dependencies>
         
@@ -27,8 +22,5 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-<<<<<<< HEAD
-    <name>SisLog</name>
-=======
->>>>>>> b2b921866b892dce7a05369c270ab649abeead9f
+    <name>SisLogin</name>
 </project>

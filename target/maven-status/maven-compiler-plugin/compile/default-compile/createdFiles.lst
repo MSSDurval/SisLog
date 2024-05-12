@@ -1,16 +1,10 @@
 com\sislog\gui\SislogGUI$1.class
 com\sislog\gui\SislogGUI.class
 com\sislog\gui\SislogGUI$2.class
-<<<<<<< HEAD
 com\sislog\gui\SislogGUI$4.class
-=======
->>>>>>> b2b921866b892dce7a05369c270ab649abeead9f
 com\sislog\sistemalogin\sis.class
 com\sislog\sistemalogin\usuario.class
 com\sislog\sistemalogin\ClasseSQL.class
 com\sislog\gui\SislogGUI$3.class
-<<<<<<< HEAD
 com\sislog\gui\SislogGUI$5.class
-=======
->>>>>>> b2b921866b892dce7a05369c270ab649abeead9f
 com\sislog\sistemalogin\Conexao.class
