@@ -1,10 +1,12 @@
 com\sislog\gui\SislogGUI$1.class
+com\sislog\sistemalogin\Sislog.class
+com\sislog\gui\SislogGUI$6.class
 com\sislog\gui\SislogGUI.class
 com\sislog\gui\SislogGUI$2.class
 com\sislog\gui\SislogGUI$4.class
-com\sislog\sistemalogin\sis.class
-com\sislog\sistemalogin\usuario.class
+com\sislog\sistemalogin\AtributosUsuário.class
+com\sislog\sistemalogin\ConsultaSQL.class
+com\sislog\sistemalogin\CadastroSQL.class
 com\sislog\sistemalogin\ClasseSQL.class
 com\sislog\gui\SislogGUI$3.class
 com\sislog\gui\SislogGUI$5.class
-com\sislog\sistemalogin\Conexao.class

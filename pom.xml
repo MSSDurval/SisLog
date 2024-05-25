@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sislog</groupId>
     <artifactId>SisLog</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
     <dependencies>
         
@@ -12,8 +12,6 @@
                 <artifactId>postgresql</artifactId>
                 <version>42.7.3</version>
             </dependency>
-        
-        
     </dependencies>
     
     

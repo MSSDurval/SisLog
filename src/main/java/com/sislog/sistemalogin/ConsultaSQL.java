@@ -4,8 +4,8 @@ import java.util.HashMap;
 /*O HasMap é uma estrutura que permite inserir elementos, usando Chave-Valor
 pares, com possibilidade de escolher o tipo da variável*/
 
-//O sislog.java acessa essa classe para se conectar ao postgresql.
-public class Conexao {
+/*O Sislog.java acessa essa classe para se conectar ao postgresql.*/
+public class ConsultaSQL {
     String cod_acesso;
     String senha;
     ClasseSQL sql = new ClasseSQL();
@@ -23,10 +23,10 @@ public class Conexao {
         try {
             conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/siscad", username, password);
             Class.forName("org.postgresql.Driver");
-            ResultSet rsCadastro = conexao.createStatement().executeQuery("SELECT * FROM cadastro");
-            while(rsCadastro.next()){
-                String cod_acesso = rsCadastro.getString("cod_acesso");
-                String senha = rsCadastro.getString("senha");
+            ResultSet rsConsulta = conexao.createStatement().executeQuery("SELECT * FROM cadastro");
+            while(rsConsulta.next()){
+                String cod_acesso = rsConsulta.getString("cod_acesso");
+                String senha = rsConsulta.getString("senha");
                 credenciais.put(cod_acesso, senha);
             }
         } catch(ClassNotFoundException erroClasse) {
@@ -38,7 +38,7 @@ public class Conexao {
             if(conexao != null) {
                 try {
                     conexao.close();
-            //Tratamento de erro para conexôes que não podem ser fechadas.
+            //Tratamento de erro para conexoes que não podem ser fechadas.
                 } catch(SQLException erroClose) {
                     System.out.println("\nErro! Esta conexão não pode ser encerrada\n" + erroClose.getMessage());
                 }
