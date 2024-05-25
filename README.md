@@ -2,7 +2,7 @@
 
 ## Sobre o Projeto
 
-Este é um projeto que tem como objetivo realizar o login e o cadastramento de usuários em um serviço, site ou plataforma. O projeto está atualmente hospedado no GitHub e está em constante evolução, com a adição de novas atualizações (e features). Veja mais em: https://www.linkedin.com/in/mssd.
+O SisLog é um sistema de segurança digital que tem como objetivo realizar o login e o cadastramento de usuários em um banco de dados. O projeto está atualmente está em ativo desenvolvimento com a adição de novas atualizações e recursos. Veja mais em: https://www.linkedin.com/in/mssd.
 
 ## Recursos
 
@@ -10,16 +10,16 @@ Este é um projeto que tem como objetivo realizar o login e o cadastramento de u
 
 ## Tecnologias Utilizadas
 
-- Java com Maven (sem frameworks)
+- Java com Maven
 - PostgreSQL
-- Git (Para versionamento de projeto)
 
-## Como Usar
+## Como Usar o SisLog
 
-1. Clone o repositório para a sua máquina local usando `git clone`.
-2. Abra o projeto no seu IDE (de preferência o NetBeans).
-3. Certifique-se de que todas as dependências estão corretamente instaladas.
-4. Execute o projeto.
+1. Clique no botão verde "Code".
+2. Após clique em 'Download ZIP' ou use 'git clone' para baixar o projeto em sua máquina.
+3. Finalizado a segundo passo, descompacte o arquivo zip "Sis-Log-main.zip" em uma pasta qualquer.
+4. Agora clique em "SisLog-0.1.1.jar".
+5. Execute o projeto.
 
 ## Contribuindo
 
