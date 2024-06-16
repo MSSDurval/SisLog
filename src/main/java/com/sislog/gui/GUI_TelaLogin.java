@@ -1,15 +1,16 @@
 package com.sislog.gui;
-import com.sislog.sistemalogin.Sislog;
+import com.sislog.sistemalogin.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.text.*;
 
 
-public class SislogGUI extends javax.swing.JFrame {
+public class GUI_TelaLogin extends javax.swing.JFrame {
     private int tentativas = 0;
-    public SislogGUI() {
+    public GUI_TelaLogin() {
         initComponents();
         /*Atributos responsáveis por centralizar o texto de Aviso */
         StyledDocument doc = lblAviso.getStyledDocument();
@@ -21,6 +22,7 @@ public class SislogGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         lblCodigo = new javax.swing.JLabel();
         txtCodAcesso = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
@@ -84,7 +86,7 @@ public class SislogGUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(129, 129, 129)
                                 .addComponent(btnLogin)
-                                .addGap(76, 110, Short.MAX_VALUE))
+                                .addGap(76, 105, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -112,7 +114,7 @@ public class SislogGUI extends javax.swing.JFrame {
                         .addComponent(btnLogin))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -135,21 +137,41 @@ public class SislogGUI extends javax.swing.JFrame {
             }
         };
         
+        /*O SisLog verifica se houve algum erro no acesso ao banco de dados*/
+        ConsultaSQL consulta = new ConsultaSQL();
+         HashMap<String, String> credenciais = consulta.connect();
+        int valorFalha = consulta.getErroAcesso();
+        int valor_errorDriver = consulta.getErroNotFound();
+        int valor_naoEncerra = consulta.getErroEncerrar();
+        
         /*O SisLog armazena as credencias do usuário.*/
         String CodigoAcesso = txtCodAcesso.getText();
         char[] Senha_Acesso = txtSenhaAcesso.getPassword();
         String SenhaAcesso = String.valueOf(Senha_Acesso);
         
-        /*E as envia para a classe responsável (Sislog.java) para verificar - las*/
+        /*E as envia para a classe responsável (Sislog.java) para verificar 
+        - las*/
         Sislog Login = new Sislog();
         Login.RealizaLogin(CodigoAcesso,SenhaAcesso);
         int valorSucesso = Login.sucesso;
         
+        /*Se as credencias tiverem corretas e nao houver erros na conexão com o
+        banco de dados, ele libera o acesso.*/
         if(valorSucesso == 1){
-                lblAviso.setText("Login realizado com sucesso!\n");
+                lblAviso.setText("\n\nLogin realizado com sucesso!\n");
                 tentativas = 0;
-        }
-        else{
+        /*Entretanto, se houver algum erro na conexão com o banco e dados, o
+        SisLog irá informar ao usuário e que aconteceu uma falha.*/        
+        }else if(valorFalha > 0 || valor_errorDriver > 0 ||
+                valor_naoEncerra > 0){
+            lblAviso.setText("\n\nFalha na conexão com o banco de dados.\n" + 
+                    "Entre em contato com o suporte técnico para solução do"
+                    + " problema\n\n");
+            valorSucesso = 0;
+            tentativas = 0;
+        }else{
+            /*Se a conexão estiver funcionando, e o usuário errar suas
+            credencias. O SisLog irá avisá - lo que uma delas está incorreta.*/
             lblAviso.setText("ERRO! \n" +
                      "Código de Acesso ou Senha incorretos! \n");
             tentativas++;
@@ -164,12 +186,12 @@ public class SislogGUI extends javax.swing.JFrame {
                         "Tente Novamente Mais Tarde.\n");
             txtCodAcesso.setEnabled(false);
             txtSenhaAcesso.setEnabled(false);
-            
-            
-            
-        }if(tentativas >= 5){
+        }
+        if(tentativas >= 5){
             btnLogin.addActionListener(acao);
             this.dispose(); //Garante o fechamento da janela.
+            System.out.println("\nSisLog finalizado, por excesso de"
+                    + " tentativas.");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -198,20 +220,23 @@ public class SislogGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SislogGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SislogGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SislogGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SislogGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SislogGUI().setVisible(true);
+                new GUI_TelaLogin().setVisible(true);
             }
         });
     }
@@ -220,6 +245,7 @@ public class SislogGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JTextPane lblAviso;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblSenha;

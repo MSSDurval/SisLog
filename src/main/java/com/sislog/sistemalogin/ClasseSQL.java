@@ -1,6 +1,6 @@
 package com.sislog.sistemalogin;
 
-//Informações necessárias para o java conectar ao PostegreSQL
+//Informações necessárias para o SisLog conectar ao PostegreSQL
 public class ClasseSQL {
         protected String severName = "localhost";
         protected String database = "siscad";

@@ -12,6 +12,9 @@ public class ConsultaSQL {
     String username = sql.getUsername();
     String password = sql.getPassword();
     Connection conexao = null;
+    protected int erroAcesso = 0;
+    protected int erroNotFound = 0;
+    protected int erroEncerrar = 0;
     
     /*O método connect em conjunto ao hashmap conecta ao bd postgresql, depois
     faz um "SELECT" na tabela de dados cadastrados. E retorna-os as respectivas
@@ -30,9 +33,12 @@ public class ConsultaSQL {
                 credenciais.put(cod_acesso, senha);
             }
         } catch(ClassNotFoundException erroClasse) {
+            erroNotFound++;
             System.out.println("\nDriver do banco de dados nao encontrado!\n" + erroClasse.getMessage());
         } catch(SQLException erroSQL) {
+            erroAcesso++;
             System.out.println("\nOcorreu um erro ao acessar o banco de dados: \n" + erroSQL.getMessage());
+           
             //Encerramento da conexão do postgresql.
         } finally {
             if(conexao != null) {
@@ -40,12 +46,24 @@ public class ConsultaSQL {
                     conexao.close();
             //Tratamento de erro para conexoes que não podem ser fechadas.
                 } catch(SQLException erroClose) {
+                    erroEncerrar++;
                     System.out.println("\nErro! Esta conexão não pode ser encerrada\n" + erroClose.getMessage());
                 }
             }
         }
         //Retorno obrigatório das credencias. (Requisito do HashMap)
         return credenciais;
+    }
+    /*Metodos getter para pegar erroAcesso, erro NotFound e erroEncerrar e
+    colocar - los em TelaLogin.*/
+    public int getErroAcesso(){
+        return erroAcesso;
+    }
+    public int getErroEncerrar(){
+        return erroEncerrar;
+    }
+    public int getErroNotFound(){
+        return erroNotFound;
     }
 }
 

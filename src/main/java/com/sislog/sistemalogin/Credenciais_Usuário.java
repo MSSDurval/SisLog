@@ -1,11 +1,11 @@
 package com.sislog.sistemalogin;
 
-public class AtributosUsuário {
-    //atributos que irao para sis.java
+public class Credenciais_Usuário {
+    //atributos que irao para Sislog.java
     String cod_acesso;
     String senha;
-    //Contrutor da classe AtributosUsuário
-    public AtributosUsuário(String cod_acesso, String senha){
+    //Contrutor da classe Credenciais_Usuário
+    public Credenciais_Usuário(String cod_acesso, String senha){
         this.cod_acesso = cod_acesso;
         this.senha = senha;
     }
