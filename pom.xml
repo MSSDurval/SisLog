@@ -40,7 +40,7 @@
         </plugins>
     </build>
     
-    <name>SisLogin</name>
+    <name>SisLog</name>
     <description>O SisLog é um sistema de segurança digital que tem como objetivo realizar o
  login e o cadastramento de usuários em um banco de dados. 
 O projeto está atualmente está em ativo desenvolvimento com 
