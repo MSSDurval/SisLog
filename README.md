@@ -15,10 +15,10 @@ O SisLog é um sistema de segurança digital que tem como objetivo realizar o lo
 
 ## Como Usar o SisLog
 
-1. Clique no botão verde "Code".
-2. Após clique em 'Download ZIP' ou use 'git clone' para baixar o projeto em sua máquina.
-3. Finalizado a segundo passo, descompacte o arquivo zip "Sis-Log-main.zip" em uma pasta qualquer.
-4. Agora clique em "SisLog-0.1.1.jar".
+1. Clique no botão verde `"Code"`.
+2. Após clique em `'Download ZIP'` ou use 'git clone' para baixar o projeto em sua máquina.
+3. Finalizado a segundo passo, descompacte o arquivo zip `"Sis-Log-main.zip"` em uma pasta qualquer.
+4. Agora clique em `"SisLog.jar"`.
 5. Execute o projeto.
 
 ## Contribuindo
