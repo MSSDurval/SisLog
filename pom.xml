@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sislog</groupId>
     <artifactId>SisLog</artifactId>
-    <version>v0.1.5</version>
+    <version>v0.2.0</version>
     <packaging>jar</packaging>
     <dependencies>
         

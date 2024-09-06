@@ -1,11 +1,11 @@
+/*Classe para testar mudanças na classe de cadastro*/
 package com.sislog.sistemalogin;
 import java.sql.*;
 import java.text.*;
 import java.util.*;
 import java.nio.ByteBuffer;
 
-
-public class CadastroSQL {
+public class ClasseTeste {
     protected String codigo_novo, senha, nome, email, telefone, data_recebida,
             estado, cidade;
     protected int registros;
@@ -14,6 +14,7 @@ public class CadastroSQL {
     String username = sql.getUsername();
     String password = sql.getPassword();
     Connection conexao = null;
+    
     
     /*Metodos que recebem os dados do usuario*/
     public void setNome(String nome){
@@ -58,9 +59,6 @@ public class CadastroSQL {
         java.util.Date data_convertida = converte_data.parse(data_recebida);
         java.sql.Date data_nascimento = new java.sql.Date(
                 data_convertida.getTime());
-        System.out.println(
-                "data " + data_nascimento + " convertida para o tipo: " + 
-                        data_nascimento.getClass().getSimpleName());
         return data_nascimento;
     }
     
@@ -89,21 +87,23 @@ public class CadastroSQL {
             /*Depuração: Aqui pode ser verificado se a classe esta recebendo
             os dados do usuário devidamente, antes de ser executada
             a interface.*/
+            System.out.println("Modo de Depuração de Dados Sensíveis:");
             System.out.println("Nome: " + nome);
             System.out.println("Email: " + email);
             System.out.println("Telefone: " + telefone);
             System.out.println("Data RECEBIDA " + data_recebida +
                     " -> " + data_recebida.getClass().getSimpleName());
-            System.out.println("Data de Nascimento conertida: " + castData());
+            System.out.println("Data de Nascimento convertida: " + castData());
             System.out.println("Estado: " + estado);
             System.out.println("Cidade: " + cidade);
-            System.out.println("Código: " + codigo_novo);
+            System.out.println("Código: " + criacodigo());
             System.out.println("Senha Criada: " + senha);
+            System.out.println("Fim da linha\n");
             
             /*Os Prepared Statements, são interfaces que pre-compilam os
             comandos de SQL, diminuindo a sobrecarga do banco, alem de podermos
             usa-los para inserir as Strings dentro do comando SQL.*/
-            System.out.println("\nPreparando o statement...");
+            System.out.println("Preparando o statement...\n");
             PreparedStatement precompila = conexao.prepareStatement(comandoSQL);
             precompila.setString(1, codigo_novo);
             precompila.setString(2, senha);
@@ -126,8 +126,10 @@ public class CadastroSQL {
                 cadastro.put("Código de Acesso", codigo_novo);
                 cadastro.put("Senha", senha);
                 System.out.println("Dados inseridos com sucesso!");
+                System.out.println("Foram cadastrdos " +
+                        registros + " registros no banco de dados\n");
             } else {
-                System.out.println("Nenhuma linha foi inserida.");
+                System.out.println("Nenhuma linha foi inserida.\n");
             }
         }
         catch(ClassNotFoundException erroClasse){
@@ -152,5 +154,18 @@ public class CadastroSQL {
             }
         }
         return cadastro;
+    }
+
+    public static void main(String[] args) throws ParseException {
+        ClasseTeste cadastro = new ClasseTeste();
+        cadastro.setNome("Sislog_v0.2");
+        cadastro.setEmail("sislog@email.com");
+        cadastro.setTelefone("2190004321");
+        cadastro.setDTNascimento("02/05/2024");
+        cadastro.setEstado("Rio de Janeiro");
+        cadastro.setCidade("Rio de Janeiro");
+        cadastro.criacodigo();
+        cadastro.criasenha();
+        cadastro.connect();   
     }
 }

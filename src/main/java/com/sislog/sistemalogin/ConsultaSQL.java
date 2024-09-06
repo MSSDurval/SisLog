@@ -6,8 +6,8 @@ pares, com possibilidade de escolher o tipo da variável*/
 
 /*O Sislog.java acessa essa classe para se conectar ao postgresql.*/
 public class ConsultaSQL {
-    String cod_acesso;
-    String senha;
+    protected String cod_acesso;
+    protected String senha;
     ClasseSQL sql = new ClasseSQL();
     String username = sql.getUsername();
     String password = sql.getPassword();

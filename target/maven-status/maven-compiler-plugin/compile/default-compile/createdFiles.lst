@@ -13,7 +13,10 @@ com\sislog\gui\GUI_TelaLogin$1.class
 com\sislog\sistemalogin\Sislog.class
 com\sislog\gui\GUI_TelaCadastro$4.class
 com\sislog\gui\GUI_TelaCadastro$2.class
+com\sislog\gui\GUI_TelaCadastro$8.class
 com\sislog\sistemalogin\CadastroSQL.class
+com\sislog\gui\GUI_TelaCadastro$7.class
 com\sislog\sistemalogin\ClasseSQL.class
 com\sislog\gui\GUI_TelaLogin$5.class
 com\sislog\gui\GUI_TelaLogin.class
+com\sislog\sistemalogin\TClass.class
